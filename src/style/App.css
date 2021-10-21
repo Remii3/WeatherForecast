@@ -74,7 +74,6 @@ body {
 }
 .informationBox_Info span:nth-child(1) {
   display: block;
-  padding: 0 25px 15px;
   font-size: 5rem;
   font-weight: 500;
   color: #fff;
@@ -182,7 +181,7 @@ body {
     min-width: 100%;
   }
 }
-@media (max-width: 300px) {
+@media (max-width: 360px) {
   .informationBox_Info span:nth-child(1) {
     font-size: 2.4rem;
   }
@@ -205,5 +204,32 @@ body {
 
   .errorMessage {
     font-size: 2.4rem;
+  }
+}
+@media (max-width: 200px) {
+  .informationBox_Info span:nth-child(1) {
+    font-size: 100%;
+  }
+  .informationBox_Info span:nth-child(2) {
+    font-size: 50%;
+    padding: 0;
+  }
+
+  .informationBox_WeatherInfo .weatherInfoWrapper {
+    height: 80%;
+  }
+  .informationBox_WeatherInfo .weatherInfoWrapper i:nth-child(1) {
+    font-size: 200%;
+  }
+  .informationBox_WeatherInfo .weatherInfoWrapper p:nth-child(2) {
+    font-size: 100%;
+  }
+  .informationBox_WeatherInfo .weatherInfoWrapper p:nth-child(3) {
+    font-size: 100%;
+  }
+
+  .errorMessage {
+    font-size: 100%;
+    padding: 0;
   }
 }/*# sourceMappingURL=App.css.map */
