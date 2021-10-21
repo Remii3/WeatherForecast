@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import "reset";
+@import "global";
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+.app {
+  background-image: url(../pictures/warm.jpg);
+  background-size: cover;
+  background-position: bottom;
+
+  &.cold {
+    background-image: url(../pictures/cold.jpg);
+  }
+  &.default {
+    background-image: url(../pictures/default.jpg);
+  }
+}
+
+.wrapper {
+  min-height: 100vh;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.75)
+  );
+
+  display: grid;
+  grid-template-columns: 15% 35% 35% 15%;
+  grid-template-rows: 50px 120px 680px 50px;
+}
+
+.searchSpace {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 4;
+
+  input {
+    display: block;
+    margin: 5px auto;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+    outline: none;
+    background: none;
+    font-family: Arial;
+    font-size: 2rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: $defaultBoxShadow;
+  }
+
+  input:focus {
+    background-color: rgba(255, 255, 255, 0.75);
+  }
+}
+
+.informationBox {
+  display: grid;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: 40% 60%;
+
+  &_Info {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    text-align: center;
+    margin-bottom: 3%;
+
+    span:nth-child(1) {
+      display: block;
+      padding: 0 25px 15px;
+      font-size: 5rem;
+      font-weight: 500;
+      color: $defaultFontColor;
+      text-shadow: $defaultTextShadow;
+    }
+    span:nth-child(2) {
+      display: block;
+      padding: 15px 25px;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 900;
+      color: $defaultFontColor;
+      text-shadow: $defaultTextShadow;
+    }
+  }
+  &_WeatherInfo {
+    grid-row-start: 2;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    & .weatherInfoWrapper {
+      height: 100%;
+      width: 28%;
+      min-width: 350px;
+      margin: 0 auto;
+      padding: 0 10px;
+      text-align: center;
+      border-radius: 16px;
+      background-color: rgba(255, 255, 255, 0.2);
+      box-shadow: $defaultBoxShadow;
+      transition: 0.4s ease-out;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+    .weatherInfoWrapper:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    i,
+    p {
+      color: $defaultFontColor;
+      margin: 0 auto;
+      text-shadow: $defaultTextShadow;
+    }
+
+    i:nth-child(1) {
+      font-size: 9rem;
+      font-weight: 900;
+    }
+    p:nth-child(2) {
+      font-size: 6rem;
+      font-weight: 900;
+    }
+    p:nth-child(3) {
+      font-size: 3.5rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.errorMessage {
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  margin: 0 auto;
+  padding: 0 25px;
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 500;
+  color: $defaultFontColor;
+  text-shadow: $defaultTextShadow;
+}
+.errorMessage::first-letter {
+  text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+  .informationBox_Info {
+    span:nth-child(1) {
+      font-size: 3.5rem;
+    }
+    span:nth-child(2) {
+      font-size: 1.8rem;
+    }
+  }
+
+  .informationBox_WeatherInfo .weatherInfoWrapper {
+    i:nth-child(1) {
+      font-size: 8rem;
+    }
+    p:nth-child(2) {
+      font-size: 5rem;
+    }
+    p:nth-child(3) {
+      font-size: 3rem;
+    }
+  }
+
+  .errorMessage {
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .searchSpace input {
+    width: 92%;
+  }
+}
+
+@media (max-width: 500px) {
+  .informationBox_WeatherInfo .weatherInfoWrapper {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 300px) {
+  .informationBox_Info {
+    span:nth-child(1) {
+      font-size: 2.4rem;
+    }
+    span:nth-child(2) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .informationBox_WeatherInfo .weatherInfoWrapper {
+    height: 80%;
+
+    i:nth-child(1) {
+      font-size: 6rem;
+    }
+    p:nth-child(2) {
+      font-size: 2.4rem;
+    }
+    p:nth-child(3) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .errorMessage {
+    font-size: 2.4rem;
+  }
+}
