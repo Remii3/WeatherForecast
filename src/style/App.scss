@@ -131,12 +131,21 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    p:nth-child(2) {
+      border-left: 0.125rem solid #fff;
+      border-right: none;
+    }
 
     .degreesBox {
-      width: 33%;
+      width: 50%;
       min-width: 120px;
+      min-height: 130px;
       text-shadow: $defaultTextShadow;
-      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      margin-bottom: 0.5rem;
       .degreesBox_name {
         display: block;
         font-size: 1.9rem;
@@ -151,10 +160,11 @@
   .weatherIcon {
     font-size: 7rem;
     text-shadow: $defaultTextShadow;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
   }
 
   .forecast {
+    padding-top: 2.5rem;
     font-size: 3rem;
     font-weight: 500;
     text-shadow: $defaultTextShadow;
@@ -190,18 +200,27 @@
   .informationBox_Weather .weatherInfoWrapper {
     width: 600px;
     .degreesSpace {
-      .degreesBox_name {
-        font-size: 2.4rem;
+      p:nth-child(2) {
+        border-right: 0.125rem solid #fff;
       }
-      .degreesBox_deg {
-        font-size: 4.5rem;
+      .degreesBox {
+        min-height: 190px;
+        width: 33%;
+        margin-bottom: 0;
+
+        .degreesBox_name {
+          font-size: 2.4rem;
+        }
+        .degreesBox_deg {
+          font-size: 4.5rem;
+        }
       }
     }
     .weatherIcon {
       font-size: 10rem;
-      padding-bottom: 3rem;
     }
     .forecast {
+      padding-top: 3rem;
       font-size: 4.5rem;
     }
   }
