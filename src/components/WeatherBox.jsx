@@ -1,5 +1,6 @@
 import dateConstructor from "../functions/dateConstructor";
 import weatherIconSelector from "../functions/weatherIconSelector";
+
 const WeatherBox = (props) => {
   const { weather, cityNameError } = props;
   return (
