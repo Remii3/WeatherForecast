@@ -2,7 +2,8 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -14,27 +15,36 @@ body {
   background-size: cover;
   background-position: bottom;
 }
+
 .app.cold {
   background-image: url(../pictures/cold.jpg);
 }
+
 .app.default {
   background-image: url(../pictures/default.jpg);
 }
 
 .wrapper {
   min-height: 100vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.75)));
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 15% 35% 35% 15%;
-  grid-template-rows: 50px 120px 680px 50px;
+  -ms-grid-columns: 15% 35% 35% 15%;
+      grid-template-columns: 15% 35% 35% 15%;
+  -ms-grid-rows: 50px 120px 680px 50px;
+      grid-template-rows: 50px 120px 680px 50px;
 }
 
 .searchSpace {
-  grid-row-start: 2;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 2;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
   grid-column-end: 4;
 }
+
 .searchSpace input {
   display: block;
   margin: 5px auto;
@@ -46,32 +56,50 @@ body {
   font-family: Arial;
   font-size: 2rem;
   background-color: rgba(255, 255, 255, 0.5);
-  box-shadow: 3px 4px rgba(50, 50, 70, 0.3);
+  -webkit-box-shadow: 3px 4px rgba(50, 50, 70, 0.3);
+          box-shadow: 3px 4px rgba(50, 50, 70, 0.3);
 }
+
 .searchSpace input:focus {
   background-color: rgba(255, 255, 255, 0.75);
 }
 
 .informationBox {
+  display: -ms-grid;
   display: grid;
-  grid-row-start: 3;
+  -ms-grid-row: 3;
+      grid-row-start: 3;
   grid-row-end: 4;
-  grid-column-start: 2;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
   grid-column-end: 4;
-  grid-template-columns: repeat(2, 50%);
-  grid-template-rows: 40% 60%;
+  -ms-grid-columns: (50%)[2];
+      grid-template-columns: repeat(2, 50%);
+  -ms-grid-rows: 40% 60%;
+      grid-template-rows: 40% 60%;
 }
+
 .informationBox_Info {
-  grid-row-start: 1;
+  -ms-grid-row: 1;
+      grid-row-start: 1;
   grid-row-end: 2;
-  grid-column-start: 1;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
   grid-column-end: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   text-align: center;
   margin-bottom: 3%;
 }
+
 .informationBox_Info span:nth-child(1) {
   display: block;
   font-size: 5rem;
@@ -79,6 +107,7 @@ body {
   color: #fff;
   text-shadow: 3px 4px rgba(50, 50, 70, 0.5);
 }
+
 .informationBox_Info span:nth-child(2) {
   display: block;
   padding: 15px 25px;
@@ -88,12 +117,16 @@ body {
   color: #fff;
   text-shadow: 3px 4px rgba(50, 50, 70, 0.5);
 }
+
 .informationBox_WeatherInfo {
-  grid-row-start: 2;
+  -ms-grid-row: 2;
+      grid-row-start: 2;
   grid-row-end: 4;
-  grid-column-start: 1;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
   grid-column-end: 3;
 }
+
 .informationBox_WeatherInfo .weatherInfoWrapper {
   height: 100%;
   width: 28%;
@@ -103,38 +136,54 @@ body {
   text-align: center;
   border-radius: 16px;
   background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 3px 4px rgba(50, 50, 70, 0.3);
+  -webkit-box-shadow: 3px 4px rgba(50, 50, 70, 0.3);
+          box-shadow: 3px 4px rgba(50, 50, 70, 0.3);
+  -webkit-transition: 0.4s ease-out;
   transition: 0.4s ease-out;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
+
 .informationBox_WeatherInfo .weatherInfoWrapper:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
+
 .informationBox_WeatherInfo i,
 .informationBox_WeatherInfo p {
   color: #fff;
   margin: 0 auto;
   text-shadow: 3px 4px rgba(50, 50, 70, 0.5);
 }
+
 .informationBox_WeatherInfo i:nth-child(1) {
   font-size: 9rem;
   font-weight: 900;
 }
+
 .informationBox_WeatherInfo p:nth-child(2) {
   font-size: 6rem;
   font-weight: 900;
 }
+
 .informationBox_WeatherInfo p:nth-child(3) {
   font-size: 3.5rem;
   font-weight: 700;
 }
 
 .errorMessage {
-  grid-row-start: 3;
+  -ms-grid-row: 3;
+      grid-row-start: 3;
   grid-row-end: 4;
-  grid-column-start: 2;
+  -ms-grid-column: 2;
+      grid-column-start: 2;
   grid-column-end: 4;
   margin: 0 auto;
   padding: 0 25px;
@@ -156,7 +205,6 @@ body {
   .informationBox_Info span:nth-child(2) {
     font-size: 1.8rem;
   }
-
   .informationBox_WeatherInfo .weatherInfoWrapper i:nth-child(1) {
     font-size: 8rem;
   }
@@ -166,21 +214,23 @@ body {
   .informationBox_WeatherInfo .weatherInfoWrapper p:nth-child(3) {
     font-size: 3rem;
   }
-
   .errorMessage {
     font-size: 3.5rem;
   }
 }
+
 @media (max-width: 650px) {
   .searchSpace input {
     width: 92%;
   }
 }
+
 @media (max-width: 500px) {
   .informationBox_WeatherInfo .weatherInfoWrapper {
     min-width: 100%;
   }
 }
+
 @media (max-width: 360px) {
   .informationBox_Info span:nth-child(1) {
     font-size: 2.4rem;
@@ -188,7 +238,6 @@ body {
   .informationBox_Info span:nth-child(2) {
     font-size: 1.5rem;
   }
-
   .informationBox_WeatherInfo .weatherInfoWrapper {
     height: 80%;
   }
@@ -201,11 +250,11 @@ body {
   .informationBox_WeatherInfo .weatherInfoWrapper p:nth-child(3) {
     font-size: 1.5rem;
   }
-
   .errorMessage {
     font-size: 2.4rem;
   }
 }
+
 @media (max-width: 200px) {
   .informationBox_Info span:nth-child(1) {
     font-size: 100%;
@@ -214,7 +263,6 @@ body {
     font-size: 50%;
     padding: 0;
   }
-
   .informationBox_WeatherInfo .weatherInfoWrapper {
     height: 80%;
   }
@@ -227,9 +275,9 @@ body {
   .informationBox_WeatherInfo .weatherInfoWrapper p:nth-child(3) {
     font-size: 100%;
   }
-
   .errorMessage {
     font-size: 100%;
     padding: 0;
   }
-}/*# sourceMappingURL=App.css.map */
+}
+/*# sourceMappingURL=App.css.map */

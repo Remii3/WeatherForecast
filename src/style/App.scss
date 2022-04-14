@@ -1,16 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import "reset";
-@import "global";
+@import "variables";
 
-body {
-  font-family: "Open Sans", sans-serif;
-}
-
-.app {
+.wrapper {
+  position: relative;
+  min-height: 100vh;
   background-image: url(../pictures/warm.jpg);
   background-size: cover;
   background-position: bottom;
-
   &.cold {
     background-image: url(../pictures/cold.jpg);
   }
@@ -19,243 +15,198 @@ body {
   }
 }
 
-.wrapper {
+.shadowOverlay {
   min-height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
   background-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.2),
     rgba(0, 0, 0, 0.75)
   );
+}
 
-  display: grid;
-  grid-template-columns: 15% 35% 35% 15%;
-  grid-template-rows: 50px 120px 680px 50px;
+.main {
+  position: relative;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 0;
 }
 
 .searchSpace {
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 2;
-  grid-column-end: 4;
-
-  input {
-    display: block;
-    margin: 5px auto;
+  margin-bottom: 2.5rem;
+  width: 90%;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: $defaultBoxShadow;
+  border-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  .cityInput {
+    width: 85%;
+    display: inline-block;
     padding: 15px;
     border: none;
-    border-radius: 16px;
     outline: none;
     background: none;
-    font-family: Arial;
-    font-size: 2rem;
-    background-color: rgba(255, 255, 255, 0.5);
-    box-shadow: $defaultBoxShadow;
+    font-size: 1.9rem;
+    color: #000;
+    pointer-events: auto;
+    border-radius: 16px 0 0 16px;
+    transition: all 0.2s ease;
   }
 
-  input:focus {
+  .cityInput:hover,
+  :focus {
     background-color: rgba(255, 255, 255, 0.75);
+  }
+  .cityInput_search {
+    border: none;
+    width: 20%;
+    background-color: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    i {
+      color: rgba(0, 0, 0, 0.4);
+      transition: all 0.2s ease;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0 16px 16px 0;
+      &:hover,
+      :focus {
+        color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(255, 255, 255, 0.75);
+      }
+    }
   }
 }
 
-.informationBox {
-  display: grid;
-  grid-row-start: 3;
-  grid-row-end: 4;
-  grid-column-start: 2;
-  grid-column-end: 4;
-  grid-template-columns: repeat(2, 50%);
-  grid-template-rows: 40% 60%;
+.informationBox_Info {
+  text-align: center;
+  width: 100%;
+  padding-bottom: 2.5rem;
+  span:nth-child(1) {
+    display: block;
+    font-size: 4rem;
+    font-weight: 500;
+    text-shadow: $defaultTextShadow;
+  }
+  span:nth-child(2) {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.9rem;
+    font-style: italic;
+    font-weight: 300;
+    text-shadow: $defaultTextShadow;
+  }
+}
 
-  &_Info {
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 3;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-
+.informationBox_Weather {
+  & .weatherInfoWrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1rem 0;
     text-align: center;
-    margin-bottom: 3%;
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: $defaultBoxShadow;
+    transition: all 0.4s ease-out;
+  }
+  .weatherInfoWrapper:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  .degreesSpace {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 
-    span:nth-child(1) {
-      display: block;
-      font-size: 5rem;
-      font-weight: 500;
-      color: $defaultFontColor;
+    .degreesBox {
+      width: 33%;
+      min-width: 120px;
       text-shadow: $defaultTextShadow;
-    }
-    span:nth-child(2) {
-      display: block;
-      padding: 15px 25px;
-      font-size: 2rem;
-      font-style: italic;
-      font-weight: 900;
-      color: $defaultFontColor;
-      text-shadow: $defaultTextShadow;
+      padding: 1rem 0;
+      .degreesBox_name {
+        display: block;
+        font-size: 1.9rem;
+      }
+      .degreesBox_deg {
+        display: block;
+        font-size: 3rem;
+      }
     }
   }
-  &_WeatherInfo {
-    grid-row-start: 2;
-    grid-row-end: 4;
-    grid-column-start: 1;
-    grid-column-end: 3;
 
-    & .weatherInfoWrapper {
-      height: 100%;
-      width: 28%;
-      min-width: 350px;
-      margin: 0 auto;
-      padding: 0 10px;
-      text-align: center;
-      border-radius: 16px;
-      background-color: rgba(255, 255, 255, 0.2);
-      box-shadow: $defaultBoxShadow;
-      transition: 0.4s ease-out;
+  .weatherIcon {
+    font-size: 7rem;
+    text-shadow: $defaultTextShadow;
+    padding-bottom: 2rem;
+  }
 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-    }
-    .weatherInfoWrapper:hover {
-      background-color: rgba(255, 255, 255, 0.3);
-    }
-
-    i,
-    p {
-      color: $defaultFontColor;
-      margin: 0 auto;
-      text-shadow: $defaultTextShadow;
-    }
-
-    i:nth-child(1) {
-      font-size: 9rem;
-      font-weight: 900;
-    }
-    p:nth-child(2) {
-      font-size: 6rem;
-      font-weight: 900;
-    }
-    p:nth-child(3) {
-      font-size: 3.5rem;
-      font-weight: 700;
-    }
+  .forecast {
+    font-size: 3rem;
+    font-weight: 500;
+    text-shadow: $defaultTextShadow;
   }
 }
 
 .errorMessage {
-  grid-row-start: 3;
-  grid-row-end: 4;
-  grid-column-start: 2;
-  grid-column-end: 4;
   margin: 0 auto;
   padding: 0 25px;
   text-align: center;
-  font-size: 5rem;
+  font-size: 3.5rem;
   font-weight: 500;
-  color: $defaultFontColor;
   text-shadow: $defaultTextShadow;
 }
 .errorMessage::first-letter {
   text-transform: uppercase;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
+  .cityInput {
+    font-size: 2rem;
+  }
+
   .informationBox_Info {
     span:nth-child(1) {
-      font-size: 3.5rem;
-    }
-    span:nth-child(2) {
-      font-size: 1.8rem;
-    }
-  }
-
-  .informationBox_WeatherInfo .weatherInfoWrapper {
-    i:nth-child(1) {
-      font-size: 8rem;
-    }
-    p:nth-child(2) {
-      font-size: 5rem;
-    }
-    p:nth-child(3) {
-      font-size: 3rem;
-    }
-  }
-
-  .errorMessage {
-    font-size: 3.5rem;
-  }
-}
-
-@media (max-width: 650px) {
-  .searchSpace input {
-    width: 92%;
-  }
-}
-
-@media (max-width: 500px) {
-  .informationBox_WeatherInfo .weatherInfoWrapper {
-    min-width: 100%;
-  }
-}
-
-@media (max-width: 360px) {
-  .informationBox_Info {
-    span:nth-child(1) {
-      font-size: 2.4rem;
-    }
-    span:nth-child(2) {
-      font-size: 1.5rem;
-    }
-  }
-
-  .informationBox_WeatherInfo .weatherInfoWrapper {
-    height: 80%;
-
-    i:nth-child(1) {
       font-size: 6rem;
     }
-    p:nth-child(2) {
-      font-size: 2.4rem;
-    }
-    p:nth-child(3) {
-      font-size: 1.5rem;
-    }
-  }
-
-  .errorMessage {
-    font-size: 2.4rem;
-  }
-}
-
-@media (max-width: 200px) {
-  .informationBox_Info {
-    span:nth-child(1) {
-      font-size: 100%;
-    }
     span:nth-child(2) {
-      font-size: 50%;
-      padding: 0;
+      font-size: 2.5rem;
     }
   }
 
-  .informationBox_WeatherInfo .weatherInfoWrapper {
-    height: 80%;
-
-    i:nth-child(1) {
-      font-size: 200%;
+  .informationBox_Weather .weatherInfoWrapper {
+    width: 600px;
+    .degreesSpace {
+      .degreesBox_name {
+        font-size: 2.4rem;
+      }
+      .degreesBox_deg {
+        font-size: 4.5rem;
+      }
     }
-    p:nth-child(2) {
-      font-size: 100%;
+    .weatherIcon {
+      font-size: 10rem;
+      padding-bottom: 3rem;
     }
-    p:nth-child(3) {
-      font-size: 100%;
+    .forecast {
+      font-size: 4.5rem;
     }
   }
 
   .errorMessage {
-    font-size: 100%;
-    padding: 0;
+    font-size: 5rem;
   }
 }
